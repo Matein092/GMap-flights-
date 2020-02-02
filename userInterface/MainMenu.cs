@@ -28,6 +28,8 @@ namespace userInterface
         {
             InitializeComponent();
             this.country = new Country();
+
+            //Aqui llama a este metodo para leer los datos y crear los vuelos
             createData();
         }
 

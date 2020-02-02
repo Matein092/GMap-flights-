@@ -10,8 +10,10 @@ namespace model
 {
     public class Country
     {
-        private const String FLIGHT_DATA_PATH = "..\\data\\flights-data.txt";
+        //Constante con la que se ubica el archivo de los datos
+        private const String FLIGHT_DATA_PATH = "..\\..\\flights-data.txt";
 
+        //Relacion con los vuelos, dependiendo de la ciudad donde este.
         private Dictionary<String, List<Flight>> flights;
 
         public Country()
