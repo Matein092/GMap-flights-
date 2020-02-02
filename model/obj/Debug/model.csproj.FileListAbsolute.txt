@@ -1,0 +1,5 @@
+C:\Users\Windows 10\source\repos\GMap-flights\model\bin\Debug\model.dll
+C:\Users\Windows 10\source\repos\GMap-flights\model\bin\Debug\model.pdb
+C:\Users\Windows 10\source\repos\GMap-flights\model\obj\Debug\model.csprojAssemblyReference.cache
+C:\Users\Windows 10\source\repos\GMap-flights\model\obj\Debug\model.dll
+C:\Users\Windows 10\source\repos\GMap-flights\model\obj\Debug\model.pdb
