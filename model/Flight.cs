@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace model
 {
-    class Flight
+    public class Flight
     {
         private String origin;
         private String destination;
@@ -24,54 +24,29 @@ namespace model
             this.flightNumber = flightNumber;
         }
 
-        public String getOrigin()
+        public String GetOrigin()
         {
             return origin;
         }
 
-        public void setOrigin(String origin)
-        {
-            this.origin = origin;
-        }
-
-        public String getDestination()
+        public String GetDestination()
         {
             return destination;
         }
 
-        public void setDestination(String destination)
-        {
-            this.destination = destination;
-        }
-
-        public String getDate()
+        public String GetDate()
         {
             return date;
         }
 
-        public void setDate(String date)
-        {
-            this.date = date;
-        }
-
-        public String getHour()
+        public String GetHour()
         {
             return hour;
         }
 
-        public void setHour(String hour)
-        {
-            this.hour = hour;
-        }
-
-        public String getFlightNumber()
+        public String GetFlightNumber()
         {
             return flightNumber;
-        }
-
-        public void setFlightNumber(String flightNumber)
-        {
-            this.flightNumber = flightNumber;
         }
     }
 }
