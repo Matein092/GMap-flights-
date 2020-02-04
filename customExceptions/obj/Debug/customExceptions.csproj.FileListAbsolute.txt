@@ -1,0 +1,5 @@
+C:\Users\Windows 10\source\repos\GMap-flights\customExceptions\bin\Debug\customExceptions.dll
+C:\Users\Windows 10\source\repos\GMap-flights\customExceptions\bin\Debug\customExceptions.pdb
+C:\Users\Windows 10\source\repos\GMap-flights\customExceptions\obj\Debug\customExceptions.csprojAssemblyReference.cache
+C:\Users\Windows 10\source\repos\GMap-flights\customExceptions\obj\Debug\customExceptions.dll
+C:\Users\Windows 10\source\repos\GMap-flights\customExceptions\obj\Debug\customExceptions.pdb

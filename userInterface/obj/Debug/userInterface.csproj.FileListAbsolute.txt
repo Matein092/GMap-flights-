@@ -23,3 +23,5 @@ C:\Users\Windows 10\source\repos\GMap-flights\userInterface\obj\Debug\userInterf
 C:\Users\Windows 10\source\repos\GMap-flights\userInterface\obj\Debug\userInterface.csproj.CopyComplete
 C:\Users\Windows 10\source\repos\GMap-flights\userInterface\obj\Debug\userInterface.exe
 C:\Users\Windows 10\source\repos\GMap-flights\userInterface\obj\Debug\userInterface.pdb
+C:\Users\Windows 10\source\repos\GMap-flights\userInterface\bin\Debug\customExceptions.dll
+C:\Users\Windows 10\source\repos\GMap-flights\userInterface\bin\Debug\customExceptions.pdb

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using customExceptions;
 
 namespace model
 {
@@ -26,26 +23,33 @@ namespace model
             return new List<string>(flights.Keys);
         }
 
+        public bool CheckEmptyField(String fieldText)
+        {
+            return fieldText.Equals("");
+        }
+
         public void ReadData()
         {
             StreamReader sr = new StreamReader(FLIGHT_DATA_PATH);
             String line = sr.ReadLine();
+            line = sr.ReadLine();
             int counter = 0;
 
-            while (line != null)
+            while (counter < 1000)
             {
-                if (counter > 0)
-                {
-                    String[] data = line.Split(',');
-                    String origin = SeparateCitiesUbication(data[16], data[19]);
-                    String destination = SeparateCitiesUbication(data[25], data[28]);
-                    String date = data[6];
-                    String hour = data[31];
-                    String flightNumber = data[11];
+                String[] data = line.Split(';');
 
-                    CreateFlights(origin, destination, date, hour, flightNumber);
-                }
+                String date = data[0];
+                String tailNumber = data[1];
+                String flightNumber = data[2];
+                String originCity = CitiesUbications(data[3], data[4]);
+                String destinationCity = CitiesUbications(data[5], data[6]);
+                String hour = data[7];
+                String arivalTime = data[8];
+                String airTime = data[10];
+                String distance = data[11];
 
+                CreateFlights(date, tailNumber, flightNumber, originCity, destinationCity, hour, arivalTime, airTime, distance);
 
                 line = sr.ReadLine();
                 counter++;
@@ -53,47 +57,54 @@ namespace model
             sr.Close();
         }
 
-        private String SeparateCitiesUbication(String city, String state)
+        private String CitiesUbications(String city, String state)
         {
-            String cityUbication;
+            String ubication = "";
 
-            String[] ubication = city.Split(',');
-            cityUbication = ubication[0] + "," + state;
+            String[] data = city.Split(',');
+            ubication = data[0] + ", " + state;
 
-            return cityUbication;
+            return ubication;
         }
 
-        private void CreateFlights(String origin, String destination, String date, String hour, String flightN)
+        private void CreateFlights(String date, String tailNumber, String flightNumber, String originCity, String destinationCity, String hour, String arivalTime, String airTime, String distance)
         {
-            Flight flight = new Flight(origin, destination, date, hour, flightN);
+            Flight flight = new Flight(date, tailNumber, flightNumber, originCity, destinationCity, hour, arivalTime, airTime, distance);
 
-            if (flights.ContainsKey(origin))
+            if (flights.ContainsKey(originCity))
             {
-                flights[origin].Add(flight);
+                flights[originCity].Add(flight);
             }
             else
             {
-                flights.Add(origin, new List<Flight>());
-                flights[origin].Add(flight);
+                flights.Add(originCity, new List<Flight>());
+                flights[originCity].Add(flight);
             }
         }
 
-        public List<Flight> FlightByOriDest(String origin, String destination)
+        public List<Flight> FlightbyOrigin(string origin)
         {
-            List<Flight> list = new List<Flight>();
+            List<Flight> list = null;
 
-            if (flights.ContainsKey(origin))
+
+            if (!CheckEmptyField(origin))
             {
-                foreach (Flight element in flights[origin])
+                if (flights.ContainsKey(origin))
                 {
-                    if (element.GetDestination().Equals(destination))
-                    {
-                        list.Add(element);
-                    }
+                    list = flights[origin];
+
+                }
+                else
+                {
+                    throw new FlightNotFoundException("Vuelo no encontrado", origin);
                 }
             }
-
+            else
+            {
+                throw new EmptyFieldException("Campo vacio", "Ciudad de Origen");
+            }
             return list;
         }
+
     }
 }

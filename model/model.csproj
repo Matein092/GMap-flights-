@@ -45,5 +45,11 @@
     <Compile Include="Flight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\customExceptions\customExceptions.csproj">
+      <Project>{fc13697e-4a52-462c-b56d-a947e7c7d5b7}</Project>
+      <Name>customExceptions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

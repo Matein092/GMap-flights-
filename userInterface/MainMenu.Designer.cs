@@ -32,8 +32,6 @@
             this.originCityField = new System.Windows.Forms.TextBox();
             this.searchFlight = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.destinationCityField = new System.Windows.Forms.TextBox();
             this.cleanFields = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -73,7 +71,7 @@
             // 
             // searchFlight
             // 
-            this.searchFlight.Location = new System.Drawing.Point(715, 170);
+            this.searchFlight.Location = new System.Drawing.Point(715, 81);
             this.searchFlight.Margin = new System.Windows.Forms.Padding(50);
             this.searchFlight.Name = "searchFlight";
             this.searchFlight.Size = new System.Drawing.Size(85, 23);
@@ -88,31 +86,13 @@
             this.label1.Location = new System.Drawing.Point(712, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 13);
+            this.label1.Size = new System.Drawing.Size(133, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Busque su Ciudad de origen";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(712, 83);
-            this.label2.Margin = new System.Windows.Forms.Padding(3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Busque su Ciudad de origen";
-            // 
-            // destinationCityField
-            // 
-            this.destinationCityField.Location = new System.Drawing.Point(715, 107);
-            this.destinationCityField.Margin = new System.Windows.Forms.Padding(50);
-            this.destinationCityField.Name = "destinationCityField";
-            this.destinationCityField.Size = new System.Drawing.Size(175, 20);
-            this.destinationCityField.TabIndex = 4;
+            this.label1.Text = "Ciudad de origen del vuelo";
             // 
             // cleanFields
             // 
-            this.cleanFields.Location = new System.Drawing.Point(805, 170);
+            this.cleanFields.Location = new System.Drawing.Point(805, 81);
             this.cleanFields.Margin = new System.Windows.Forms.Padding(50);
             this.cleanFields.Name = "cleanFields";
             this.cleanFields.Size = new System.Drawing.Size(85, 23);
@@ -127,8 +107,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 536);
             this.Controls.Add(this.cleanFields);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.destinationCityField);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchFlight);
             this.Controls.Add(this.originCityField);
@@ -147,8 +125,6 @@
         private System.Windows.Forms.TextBox originCityField;
         private System.Windows.Forms.Button searchFlight;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox destinationCityField;
         private System.Windows.Forms.Button cleanFields;
     }
 }

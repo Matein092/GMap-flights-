@@ -109,6 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\customExceptions\customExceptions.csproj">
+      <Project>{fc13697e-4a52-462c-b56d-a947e7c7d5b7}</Project>
+      <Name>customExceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\model\model.csproj">
       <Project>{4f6368e8-396f-47a5-a568-a18bd9ec073f}</Project>
       <Name>model</Name>
