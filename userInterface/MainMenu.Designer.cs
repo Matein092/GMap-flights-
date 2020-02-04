@@ -33,6 +33,8 @@
             this.searchFlight = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cleanFields = new System.Windows.Forms.Button();
+            this.dataView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             this.SuspendLayout();
             // 
             // gmap
@@ -63,7 +65,7 @@
             // 
             // originCityField
             // 
-            this.originCityField.Location = new System.Drawing.Point(715, 39);
+            this.originCityField.Location = new System.Drawing.Point(812, 37);
             this.originCityField.Margin = new System.Windows.Forms.Padding(50);
             this.originCityField.Name = "originCityField";
             this.originCityField.Size = new System.Drawing.Size(175, 20);
@@ -71,7 +73,7 @@
             // 
             // searchFlight
             // 
-            this.searchFlight.Location = new System.Drawing.Point(715, 81);
+            this.searchFlight.Location = new System.Drawing.Point(812, 79);
             this.searchFlight.Margin = new System.Windows.Forms.Padding(50);
             this.searchFlight.Name = "searchFlight";
             this.searchFlight.Size = new System.Drawing.Size(85, 23);
@@ -83,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(712, 15);
+            this.label1.Location = new System.Drawing.Point(809, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 13);
@@ -92,7 +94,7 @@
             // 
             // cleanFields
             // 
-            this.cleanFields.Location = new System.Drawing.Point(805, 81);
+            this.cleanFields.Location = new System.Drawing.Point(902, 79);
             this.cleanFields.Margin = new System.Windows.Forms.Padding(50);
             this.cleanFields.Name = "cleanFields";
             this.cleanFields.Size = new System.Drawing.Size(85, 23);
@@ -101,11 +103,24 @@
             this.cleanFields.UseVisualStyleBackColor = true;
             this.cleanFields.Click += new System.EventHandler(this.cleanFields_Click);
             // 
+            // dataView
+            // 
+            this.dataView.AllowUserToAddRows = false;
+            this.dataView.AllowUserToDeleteRows = false;
+            this.dataView.AllowUserToOrderColumns = true;
+            this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataView.Location = new System.Drawing.Point(678, 157);
+            this.dataView.Name = "dataView";
+            this.dataView.ReadOnly = true;
+            this.dataView.Size = new System.Drawing.Size(427, 387);
+            this.dataView.TabIndex = 7;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 536);
+            this.ClientSize = new System.Drawing.Size(1117, 556);
+            this.Controls.Add(this.dataView);
             this.Controls.Add(this.cleanFields);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchFlight);
@@ -114,6 +129,7 @@
             this.Name = "MainMenu";
             this.Text = "GMap Flights";
             this.Load += new System.EventHandler(this.MainMenu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +142,7 @@
         private System.Windows.Forms.Button searchFlight;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cleanFields;
+        private System.Windows.Forms.DataGridView dataView;
     }
 }
 

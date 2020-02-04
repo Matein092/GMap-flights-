@@ -137,20 +137,7 @@ namespace userInterface
 
         private void TraceRoute()
         {
-            PointLatLng point1;
-            gmap.GetPositionByKeywords(this.originCityField.Text, out point1);
 
-            PointLatLng point2;
-            gmap.GetPositionByKeywords(this.destinationCityField.Text, out point2);
-
-            GMapOverlay gMapOverlay = new GMapOverlay("Marcador");
-            GMarkerGoogle marker1 = new GMarkerGoogle(point1, GMarkerGoogleType.orange);
-            GMarkerGoogle marker2 = new GMarkerGoogle(point2, GMarkerGoogleType.orange);
-
-            gMapOverlay.Markers.Add(marker1);
-            gMapOverlay.Markers.Add(marker2);
-
-            gmap.Overlays.Add(gMapOverlay);
         }
     }
 }
