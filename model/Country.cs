@@ -33,9 +33,8 @@ namespace model
             StreamReader sr = new StreamReader(FLIGHT_DATA_PATH);
             String line = sr.ReadLine();
             line = sr.ReadLine();
-            int counter = 0;
-
-            while (counter < 1000)
+            
+            while (line != null)
             {
                 String[] data = line.Split(';');
 
@@ -52,7 +51,6 @@ namespace model
                 CreateFlights(date, tailNumber, flightNumber, originCity, destinationCity, hour, arivalTime, airTime, distance);
 
                 line = sr.ReadLine();
-                counter++;
             }
             sr.Close();
         }

@@ -34,6 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cleanFields = new System.Windows.Forms.Button();
             this.dataView = new System.Windows.Forms.DataGridView();
+            this.filterBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.filterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +68,7 @@
             // 
             // originCityField
             // 
-            this.originCityField.Location = new System.Drawing.Point(812, 37);
+            this.originCityField.Location = new System.Drawing.Point(678, 40);
             this.originCityField.Margin = new System.Windows.Forms.Padding(50);
             this.originCityField.Name = "originCityField";
             this.originCityField.Size = new System.Drawing.Size(175, 20);
@@ -73,7 +76,7 @@
             // 
             // searchFlight
             // 
-            this.searchFlight.Location = new System.Drawing.Point(812, 79);
+            this.searchFlight.Location = new System.Drawing.Point(678, 82);
             this.searchFlight.Margin = new System.Windows.Forms.Padding(50);
             this.searchFlight.Name = "searchFlight";
             this.searchFlight.Size = new System.Drawing.Size(85, 23);
@@ -85,7 +88,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(809, 13);
+            this.label1.Location = new System.Drawing.Point(695, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 13);
@@ -94,7 +97,7 @@
             // 
             // cleanFields
             // 
-            this.cleanFields.Location = new System.Drawing.Point(902, 79);
+            this.cleanFields.Location = new System.Drawing.Point(768, 82);
             this.cleanFields.Margin = new System.Windows.Forms.Padding(50);
             this.cleanFields.Name = "cleanFields";
             this.cleanFields.Size = new System.Drawing.Size(85, 23);
@@ -115,11 +118,44 @@
             this.dataView.Size = new System.Drawing.Size(427, 387);
             this.dataView.TabIndex = 7;
             // 
+            // filterBox
+            // 
+            this.filterBox.FormattingEnabled = true;
+            this.filterBox.Location = new System.Drawing.Point(925, 39);
+            this.filterBox.Name = "filterBox";
+            this.filterBox.Size = new System.Drawing.Size(167, 21);
+            this.filterBox.TabIndex = 8;
+            this.filterBox.Text = "Seleccione una opcion";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(945, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Filtrar la Informacion por:";
+            // 
+            // filterButton
+            // 
+            this.filterButton.Location = new System.Drawing.Point(963, 81);
+            this.filterButton.Margin = new System.Windows.Forms.Padding(50);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(85, 23);
+            this.filterButton.TabIndex = 10;
+            this.filterButton.Text = "Filtrar";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 556);
+            this.Controls.Add(this.filterButton);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.filterBox);
             this.Controls.Add(this.dataView);
             this.Controls.Add(this.cleanFields);
             this.Controls.Add(this.label1);
@@ -143,6 +179,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cleanFields;
         private System.Windows.Forms.DataGridView dataView;
+        private System.Windows.Forms.ComboBox filterBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button filterButton;
     }
 }
 

@@ -22,6 +22,13 @@ namespace userInterface
         public MainMenu()
         {
             InitializeComponent();
+
+            filterBox.Items.Add("Numero del Avion");
+            filterBox.Items.Add("Fecha Salida");
+            filterBox.Items.Add("Tiempo Vuelo");
+            filterBox.Items.Add("Ciudad Destino");
+            filterBox.Items.Add("Distancia");
+
             this.country = new Country();
         }
 
@@ -46,6 +53,8 @@ namespace userInterface
                 List<Flight> list = country.FlightbyOrigin(originCityField.Text);
 
                 gmap.Overlays.Clear();
+                dataView.Rows.Clear();
+                dataView.Columns.Clear();
                 CreateCityMarker(originCityField.Text, list);
             }
             catch (FlightNotFoundException ex)
@@ -61,6 +70,10 @@ namespace userInterface
         private void cleanFields_Click(object sender, EventArgs e)
         {
             this.originCityField.Text = "";
+            dataView.Rows.Clear();
+            dataView.Columns.Clear();
+
+            gmap.Overlays.Clear();
             CreateMarkers();
 
             gmap.Zoom = 4;
@@ -85,7 +98,44 @@ namespace userInterface
 
         private void ShowCityFlights(List<Flight> flights)
         {
+            dataView.ColumnCount = 9;
 
+            DataGridViewColumn flightNC = dataView.Columns[0];
+            flightNC.HeaderText = "Numero Vuelo";
+            DataGridViewColumn tailNC = dataView.Columns[1];
+            tailNC.HeaderText = "Numero Avion";
+            DataGridViewColumn dateC = dataView.Columns[2];
+            dateC.HeaderText = "Fecha Salida";
+            DataGridViewColumn hourC = dataView.Columns[3];
+            hourC.HeaderText = "Hora Salida (hhmm)";
+            DataGridViewColumn originCityC = dataView.Columns[4];
+            originCityC.HeaderText = "Ciudad Origen";
+            DataGridViewColumn destinationCityC = dataView.Columns[5];
+            destinationCityC.HeaderText = "Ciudad Destino";
+            DataGridViewColumn airTimeC = dataView.Columns[6];
+            airTimeC.HeaderText = "Tiempo Vuelo";
+            DataGridViewColumn arrvialTimeC = dataView.Columns[7];
+            arrvialTimeC.HeaderText = "Tiempo Llegada (hhmm)";
+            DataGridViewColumn distanceC = dataView.Columns[8];
+            distanceC.HeaderText = "Distancia";
+
+            foreach (Flight element in flights)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+                
+                row.Cells[0].Value = element.FlightNumber;
+                row.Cells[1].Value = element.TailNumber;
+                row.Cells[2].Value = element.Date;
+                row.Cells[3].Value = element.Hour;
+                row.Cells[4].Value = element.OriginCity;
+                row.Cells[5].Value = element.DestinationCity;
+                row.Cells[6].Value = element.AirTime;
+                row.Cells[7].Value = element.ArivalTime;
+                row.Cells[8].Value = element.Distance;
+
+                dataView.Rows.Add(row);
+            }
         }
 
         private void CreateData()
@@ -135,8 +185,145 @@ namespace userInterface
             }
         }
 
-        private void TraceRoute()
+        private void FilterByTailNumber(String origin)
         {
+            dataView.Rows.Clear();
+            dataView.Columns.Clear();
+
+            dataView.ColumnCount = 1;
+            List<Flight> list = country.FlightbyOrigin(origin);
+
+            DataGridViewColumn flightNC = dataView.Columns[0];
+            flightNC.HeaderText = "Numero Avion";
+
+            foreach (Flight element in list)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+
+                row.Cells[0].Value = element.TailNumber;
+                dataView.Rows.Add(row);
+            }
+        }
+
+        private void FilterByDate(String origin)
+        {
+            dataView.Rows.Clear();
+            dataView.Columns.Clear();
+
+            dataView.ColumnCount = 1;
+            List<Flight> list = country.FlightbyOrigin(origin);
+
+            DataGridViewColumn dateC = dataView.Columns[0];
+            dateC.HeaderText = "Fecha Salida";
+
+            foreach (Flight element in list)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+
+                row.Cells[0].Value = element.Date;
+                dataView.Rows.Add(row);
+            }
+        }
+
+        private void FilterByAirTime(String origin)
+        {
+            dataView.Rows.Clear();
+            dataView.Columns.Clear();
+
+            dataView.ColumnCount = 1;
+            List<Flight> list = country.FlightbyOrigin(origin);
+
+            DataGridViewColumn airTimeC = dataView.Columns[0];
+            airTimeC.HeaderText = "Tiempo Vuelo";
+
+            foreach (Flight element in list)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+
+                row.Cells[0].Value = element.AirTime;
+                dataView.Rows.Add(row);
+            }
+        }
+
+        private void FilterByDestination(String origin)
+        {
+            dataView.Rows.Clear();
+            dataView.Columns.Clear();
+
+            dataView.ColumnCount = 1;
+            List<Flight> list = country.FlightbyOrigin(origin);
+
+            DataGridViewColumn destinationCityC = dataView.Columns[0];
+            destinationCityC.HeaderText = "Ciudad Destino";
+
+            foreach (Flight element in list)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+
+                row.Cells[0].Value = element.DestinationCity;
+                dataView.Rows.Add(row);
+            }
+        }
+
+        private void FilterByDistance(String origin)
+        {
+            dataView.Rows.Clear();
+            dataView.Columns.Clear();
+
+            dataView.ColumnCount = 1;
+            List<Flight> list = country.FlightbyOrigin(origin);
+
+            DataGridViewColumn distanceC = dataView.Columns[0];
+            distanceC.HeaderText = "Distancia";
+
+            foreach (Flight element in list)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataView);
+
+                row.Cells[0].Value = element.Distance;
+                dataView.Rows.Add(row);
+            }
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            if (dataView.Columns.Count > 0)
+            {
+                if (filterBox.SelectedItem != null)
+                {
+                    switch (filterBox.SelectedItem)
+                    {
+                        case "Numero del Avion":
+                            FilterByTailNumber(originCityField.Text);
+                            break;
+                        case "Fecha Salida":
+                            FilterByDate(originCityField.Text);
+                            break;
+                        case "Tiempo Vuelo":
+                            FilterByAirTime(originCityField.Text);
+                            break;
+                        case "Ciudad Destino":
+                            FilterByDestination(originCityField.Text);
+                            break;
+                        case "Distancia":
+                            FilterByDistance(originCityField.Text);
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe de elegir un campo para filtar la informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe de elegir una ciudad primero para filtar la informacion", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
